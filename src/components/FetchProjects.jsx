@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Client, query as q, errors } from "faunadb";
 
 const faunaClient = new Client({
-  secret: process.env.FAUNA_ADMIN_KEY,
+  secret: import.meta.VITE_FAUNA_ADMIN_KEY,
 });
 
 export default function FetchProjects() {
