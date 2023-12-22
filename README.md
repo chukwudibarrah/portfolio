@@ -24,7 +24,7 @@ The goal was to create an interactive website that was minimal and clean, and ef
 
 ### Links
 
-- Live site URL: [Portfolio](https://portfolio-4eif5z87i-chukwudibarrah.vercel.app/)
+- Live site URL: [Portfolio](https://chukwudibarrah.netlify.app/)
 
 ## My process
 
