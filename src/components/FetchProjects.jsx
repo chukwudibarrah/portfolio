@@ -47,7 +47,7 @@ export default function FetchProjects() {
       {projects.map((project, index) => (
         <div key={index}>
           <div className="">
-            <a href={project.url}>
+            <a href={project.url} target="_blank" rel="noopener noreferrer">
               <div>
                 <img
                   src={project.image}
@@ -57,7 +57,7 @@ export default function FetchProjects() {
               </div>
             </a>
             <div>
-              <a href={project.url}>
+              <a href={project.url} target="_blank" rel="noopener noreferrer">
                 <h2 className="text-3xl text-gray-200 md:text-[39px] font-outfit my-4">
                   {project.title}
                 </h2>
@@ -75,6 +75,8 @@ export default function FetchProjects() {
                   href={project.url}
                   id="animate"
                   className="font-zilla text-gray-200 text-xl hover:text-sienna"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   See project
                 </a>

@@ -11,12 +11,10 @@ export default function Post() {
   const [error, setError] = useState(null);
 
   const client = contentful.createClient({
-    space: import.meta.env.VITE_SPACE_ID,
-    environment: import.meta.env.VITE_ENVIRONMENT,
-    accessToken: import.meta.env.VITE_ACCESS_TOKEN,
+    space: import.meta.env.VITE_CONTENTFUL_SPACE_ID,
+    accessToken: import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN,
+    previewAccessToken: import.meta.env.VITE_CONTENTFUL_PREVIEW_ACCESS_TOKEN,
   });
-
-  console.log("This is the env:", import.meta.env.VITE_ENVIRONMENT);
 
   useEffect(() => {
     const fetchPost = async () => {
