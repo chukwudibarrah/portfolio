@@ -17,7 +17,7 @@ export default function Home() {
         barrah
       </p>
       <div>
-        <h1 className="text-6xl text-sienna pt-28 md:pt-0 md:text-[170px] font-bold z-40 font-outfit">
+        <h1 className="text-6xl text-brown pt-28 md:pt-0 md:text-[170px] font-bold z-40 font-outfit">
           <Typewriter
             options={{
               autoStart: true,
