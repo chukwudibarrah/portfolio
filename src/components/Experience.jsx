@@ -3,7 +3,7 @@ import { Client, query as q } from "faunadb";
 import Accordion from "./Accordion";
 
 const faunaClient = new Client({
-  secret: import.meta.env.VITE_FAUNA_ADMIN_KEY,
+  secret: process.env.FAUNA_ADMIN_KEY,
 });
 
 export default function Experience() {
