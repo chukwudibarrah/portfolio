@@ -7,9 +7,9 @@ export default function Journal() {
   const [posts, setPosts] = useState([]);
 
   const client = contentful.createClient({
-    space: import.meta.VITE_CONTENTFUL_SPACE_ID,
-    accessToken: import.meta.VITE_CONTENTFUL_ACCESS_TOKEN,
-    previewAccessToken: import.meta.VITE_CONTENTFUL_PREVIEW_ACCESS_TOKEN,
+    space: import.meta.env.VITE_CONTENTFUL_SPACE_ID,
+    accessToken: import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN,
+    previewAccessToken: import.meta.env.VITE_CONTENTFUL_PREVIEW_ACCESS_TOKEN,
   });
 
   useEffect(() => {
