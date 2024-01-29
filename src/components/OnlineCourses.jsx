@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Client, query as q } from "faunadb";
 import Accordion from "./Accordion";
+import { trackLinkClick } from "../utils/Analytics";
 
 const faunaClient = new Client({
   secret: import.meta.env.VITE_FAUNA_ADMIN_KEY,
@@ -42,6 +43,7 @@ export default function OnlineCourses() {
 
   const handleClick = (index) => {
     setActiveIndex(index === activeIndex ? -1 : index);
+    trackLinkClick("Online courses accordion");
   };
 
   return (

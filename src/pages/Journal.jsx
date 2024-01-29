@@ -2,9 +2,16 @@ import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import * as contentful from 'contentful';
+import { trackLinkClick } from "../utils/Analytics";
 
 export default function Journal() {
   const [posts, setPosts] = useState([]);
+
+  // Track GA4 link clicks
+
+  const handleLinkClick = () => {
+    trackLinkClick("Journal links");
+  };
 
   const client = contentful.createClient({
     space: import.meta.env.VITE_CONTENTFUL_SPACE_ID,
@@ -34,7 +41,7 @@ export default function Journal() {
     <div className="min-h-screen w-screen overscroll-none bg-charcoal">
       <div className="grid lg:grid-cols-2 gap-10 font-outfit py-32 justify-items-center cursor-pointer md:mx-28 mx-4">
         {posts.map((post) => (
-          <Link key={post.sys.id} to={`/journal/${post.fields.slug}`}>
+          <Link key={post.sys.id} to={`/journal/${post.fields.slug}`} onClick={handleLinkClick}>
             {post.fields.featuredImage && (
               <img
                 src={post.fields.featuredImage.fields.file.url}

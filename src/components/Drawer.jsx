@@ -1,11 +1,13 @@
 import { useState } from "react";
 import Nav from "./Nav";
+import { trackLinkClick } from "../utils/Analytics";
 
 export default function Drawer() {
   const [showDrawer, setShowDrawer] = useState(false);
 
   function handleHideDrawer() {
     setShowDrawer(!showDrawer)
+    trackLinkClick("Drawer and nav link clicked");
   }
 
   // handle showing and hiding the drawer on click 

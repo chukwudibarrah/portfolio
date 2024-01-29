@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { trackLinkClick } from "../utils/Analytics";
 
 export default function Accordion({ title, content }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,6 +37,7 @@ export default function Accordion({ title, content }) {
 
   const toggleAccordion = () => {
     setIsOpen(!isOpen);
+    trackLinkClick("Accordion item clicked");
   };
 
   return (

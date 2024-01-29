@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Client, query as q, errors } from "faunadb";
+import { trackLinkClick } from "../utils/Analytics";
 
 const faunaClient = new Client({
   secret: import.meta.env.VITE_FAUNA_ADMIN_KEY,
@@ -7,6 +8,12 @@ const faunaClient = new Client({
 
 export default function FetchProjects() {
   const [projects, setProjects] = useState([]);
+
+  // Track GA4 clicks
+
+  const handleLinkClick = () => {
+    trackLinkClick("Projects link clicked");
+  };
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -47,7 +54,12 @@ export default function FetchProjects() {
       {projects.map((project, index) => (
         <div key={index}>
           <div className="">
-            <a href={project.url} target="_blank" rel="noopener noreferrer">
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleLinkClick}
+            >
               <div>
                 <img
                   src={project.image}
@@ -57,7 +69,12 @@ export default function FetchProjects() {
               </div>
             </a>
             <div>
-              <a href={project.url} target="_blank" rel="noopener noreferrer">
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleLinkClick}
+              >
                 <h2 className="text-3xl text-gray-200 md:text-[39px] font-outfit my-4">
                   {project.title}
                 </h2>
@@ -67,9 +84,15 @@ export default function FetchProjects() {
               <p className="font-extralight text-lg text-saffron font-zilla my-3">
                 {project.description}
               </p>
-              <p className="text-xl text-gray-200 font-zilla">Company: {project.company}</p>
-              <p className="text-xl text-gray-200 font-zilla">Media: {project.media}</p>
-              <p className="text-xl text-gray-200 font-zilla">Role: {project.role}</p>
+              <p className="text-xl text-gray-200 font-zilla">
+                Company: {project.company}
+              </p>
+              <p className="text-xl text-gray-200 font-zilla">
+                Media: {project.media}
+              </p>
+              <p className="text-xl text-gray-200 font-zilla">
+                Role: {project.role}
+              </p>
               <div className="my-5">
                 <a
                   href={project.url}
@@ -77,6 +100,7 @@ export default function FetchProjects() {
                   className="font-zilla text-gray-200 text-xl hover:text-sienna"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={handleLinkClick}
                 >
                   See project
                 </a>

@@ -3,18 +3,25 @@ import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
 import Toast from "../features/Toast";
+import ReactGA from "react-ga4";
 
 export default function Modal({ isOpen, onClose }) {
   const [buttonLoading, setButtonLoading] = useState(false);
-
   const form = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setButtonLoading(true);
 
-    // call emailjs method to send email
+    // Track form submission
+    ReactGA.send({
+      hitType: "event",
+      eventCategory: "Form",
+      eventAction: "Submit",
+      eventLabel: "Contact Form",
+    });
 
+    // call emailjs method to send email
     emailjs
       .sendForm(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -25,15 +32,44 @@ export default function Modal({ isOpen, onClose }) {
       .then(
         () => {
           toast("Message sent!");
+
+          // Track successful form submission
+          ReactGA.send({
+            hitType: "event",
+            eventCategory: "Form",
+            eventAction: "Success",
+            eventLabel: "Contact Form",
+          });
+
           setButtonLoading(false);
           e.target.reset();
         },
         (error) => {
           console.error("Error sending email:", error);
+
+          // Track failed form submission
+          ReactGA.send({
+            hitType: "event",
+            eventCategory: "Form",
+            eventAction: "Error",
+            eventLabel: "Contact Form",
+          });
+
           toast("Error sending email. Please try again.");
+          setButtonLoading(false);
           e.target.reset();
         }
       );
+  };
+
+  const trackButtonClick = () => {
+    // Track button click
+    ReactGA.send({
+      hitType: "event",
+      eventCategory: "Button",
+      eventAction: "Click",
+      eventLabel: "Send Button",
+    });
   };
 
   return (
@@ -105,6 +141,7 @@ export default function Modal({ isOpen, onClose }) {
                 id="submit"
                 type="submit"
                 disabled={buttonLoading && true}
+                onClick={trackButtonClick}
                 className="text-sm uppercase rounded-full outline-dashed hover:outline-sienna hover:text-sienna hover:font-extrabold hover:cursor-pointer outline-gray-300 text-gray-300 font-bold py-16 px-11"
               >
                 {buttonLoading ? "Sending..." : "Send"}

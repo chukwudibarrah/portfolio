@@ -14,7 +14,7 @@ export default function Portfolio() {
         <br />
         <span className="md:ml-14">folio</span>
       </p>
-      <h1>A selection of what I've worked on</h1>
+      <h1>A selection of what I&apos;ve worked on</h1>
     </motion.div>
   );
 }

@@ -2,13 +2,30 @@ import Typewriter from "typewriter-effect";
 import { motion } from "framer-motion";
 import { container, item } from "../features/Animation";
 import { NavLink } from "react-router-dom";
+import { trackLinkClick } from "../utils/Analytics";
 
 const greetings = [
-  "Hello!", "Nǐ hǎo!", "Bonjour!", "Nde-ewo!", "Sawubona!", "Hola!",
-  "Namastē!", "Salam!", "Konnichiwa!", "Shalom!", "Marhaba!", "Guten tag"
+  "Hello!",
+  "Nǐ hǎo!",
+  "Bonjour!",
+  "Nde-ewo!",
+  "Sawubona!",
+  "Hola!",
+  "Namastē!",
+  "Salam!",
+  "Konnichiwa!",
+  "Shalom!",
+  "Marhaba!",
+  "Guten tag",
 ];
 
 export default function Home() {
+  // Track GA4 link clicks
+
+  const handleLinkClick = () => {
+    trackLinkClick("Home page link");
+  };
+
   return (
     <main className="min-h-screen w-screen overscroll-none overflow-hidden flex flex-col items-center justify-center bg-charcoal">
       <p className="fixed z-0 text-[110px] leading-[90px] md:text-[350px] md:leading-[250px] opacity-5 text-gray-200 font-extrabold select-none">
@@ -26,10 +43,7 @@ export default function Home() {
             className="text-4xl"
             onInit={(typewriter) => {
               greetings.forEach((greeting, index) => {
-                typewriter
-                  .typeString(greeting)
-                  .pauseFor(3000)
-                  .deleteAll();
+                typewriter.typeString(greeting).pauseFor(3000).deleteAll();
                 if (index === greetings.length - 1) {
                   typewriter.start();
                 }
@@ -38,14 +52,22 @@ export default function Home() {
           />
         </h1>
       </div>
-      <motion.div variants={container} initial="hidden" animate="show" className="overflow-hidden">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="overflow-hidden"
+      >
         <motion.p
           variants={item}
           className="text-gray-300 font-extralight my-10 px-10 lg:px-96 leading-relaxed text-lg md:text-3xl text-center z-20 font-zilla"
         >
-          Editor, web developer, amateur photographer, avid hiker, tech enthusiast and eternal student, passionate about building, creating and problem-solving.
+          Editor, web developer, amateur photographer, avid hiker, tech
+          enthusiast and eternal student, passionate about building, creating
+          and problem-solving.
           <br />
-          My name is Chukwudi Barrah and I believe in doing a diverse range of work. 
+          My name is Chukwudi Barrah and I believe in doing a diverse range of
+          work.
         </motion.p>
         <motion.div
           animate={{ x: 0 }}
@@ -53,7 +75,11 @@ export default function Home() {
           transition={{ delay: 0.4, duration: 0.4 }}
           className="overflow-hidden text-center mt-20 md:mt-28 group text-gray-300 transition-all duration-300 ease-in-out"
         >
-          <NavLink to="/projects" className="font-extralight font-zilla text-gray-300 text-lg md:text-3xl bg-left-bottom bg-gradient-to-r from-sienna to-sienna bg-[length:100%_5px] bg-no-repeat group-hover:bg-[length:0%_5px] transition-all duration-700 ease-out z-40 hover:text-sienna">
+          <NavLink
+            to="/projects"
+            className="font-extralight font-zilla text-gray-300 text-lg md:text-3xl bg-left-bottom bg-gradient-to-r from-sienna to-sienna bg-[length:100%_5px] bg-no-repeat group-hover:bg-[length:0%_5px] transition-all duration-700 ease-out z-40 hover:text-sienna"
+            onClick={handleLinkClick}
+          >
             See selected projects
           </NavLink>
         </motion.div>

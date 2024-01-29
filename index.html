@@ -9,11 +9,10 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
-        dataLayer.push(arguments);
+        window.dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
-      gtag("config", "G-141ZFEMEVE");
+      gtag("config", "G-141ZFEMEVE", { send_page_view: false });
     </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

@@ -2,9 +2,16 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Modal from "./Modal";
+import { trackLinkClick } from "../utils/Analytics";
 
 export default function Footer() {
   const [modalOpen, setModalOpen] = useState(false);
+
+  // Track GA4 clicks
+
+  const handleLinkClick = () => {
+    trackLinkClick("Footer links clicked");
+  };
 
   const openModal = () => {
     setModalOpen(true);
@@ -13,7 +20,6 @@ export default function Footer() {
   const closeModal = () => {
     setModalOpen(false);
   };
-
 
   return (
     <footer className="min-h-screen font-poppins w-screen overscroll-none overflow-hidden grid content-center items-center bg-black opacity-85 pt-32">
@@ -30,19 +36,20 @@ export default function Footer() {
           transition={{ delay: 0.5, duration: 0.5 }}
           className="text-gray-300 md:text-2xl text-xl md:px-32 px-11 font-extralight leading-loose"
         >
-          Ready to start creating an outstanding web presence? Let's discuss your amazing ideas.
+          Ready to start creating an outstanding web presence? Let's discuss
+          your amazing ideas.
           <br />
           <br />
           <span className="md:text-6xl text-5xl uppercase font-outfit font-extrabold">
             Send me an email at the address below or feel free to use{"  "}
           </span>
           <span className="group text-gray-300 transition-all duration-300 ease-in-out">
-          <span
-            className="bg-left-bottom bg-gradient-to-r from-sienna to-sienna bg-[length:100%_8px] bg-no-repeat group-hover:bg-[length:0%_8px] transition-all duration-700 ease-out z-40 hover:text-sienna md:text-6xl text-5xl uppercase font-outfit font-extrabold hover:cursor-pointer"
-            onClick={openModal}
-          >
-            the contact form.
-          </span>
+            <span
+              className="bg-left-bottom bg-gradient-to-r from-sienna to-sienna bg-[length:100%_8px] bg-no-repeat group-hover:bg-[length:0%_8px] transition-all duration-700 ease-out z-40 hover:text-sienna md:text-6xl text-5xl uppercase font-outfit font-extrabold hover:cursor-pointer"
+              onClick={openModal}
+            >
+              the contact form.
+            </span>
           </span>
         </motion.h2>
       </div>
@@ -75,31 +82,40 @@ export default function Footer() {
             </span>
             Email
           </h3>
-          <a href="mailto:contact@chukwudibarrah.com" id="animate" className="font-outfit font-extralight text-xl select-none hover:text-sienna">contact@chukwudibarrah.com</a>
+          <a
+            href="mailto:contact@chukwudibarrah.com"
+            id="animate"
+            className="font-outfit font-extralight text-xl select-none hover:text-sienna"
+            onClick={handleLinkClick}
+          >
+            contact@chukwudibarrah.com
+          </a>
         </div>
       </motion.div>
 
       <div className="flex flex-col md:px-32 px-11 md:flex-row opacity-100 text-gray-300 font-outfit font-extralight tracking-wider z-20">
-      <div className="text-gray-300">
-        <NavLink
-          to="https://github.com/chukwudibarrah/portfolio"
-          id="animate"
-          className="z-40 hover:text-sienna leading-loose my-4"
-        >
-          See site source code
-        </NavLink>
+        <div className="text-gray-300">
+          <NavLink
+            to="https://github.com/chukwudibarrah/portfolio"
+            id="animate"
+            className="z-40 hover:text-sienna leading-loose my-4"
+            onClick={handleLinkClick}
+          >
+            See site source code
+          </NavLink>
         </div>
         <div className="text-gray-300">
-        <NavLink
-          to="https://github.com/chukwudibarrah"
-          id="animate"
-          className="z-40 hover:text-sienna leading-loose my-4 md:mx-20"
-        >
-          My GitHub
-        </NavLink>
+          <NavLink
+            to="https://github.com/chukwudibarrah"
+            id="animate"
+            className="z-40 hover:text-sienna leading-loose my-4 md:mx-20"
+            onClick={handleLinkClick}
+          >
+            My GitHub
+          </NavLink>
         </div>
         <div className="text-gray-300">
-        <p className="leading-loose mb-20">Chukwudi Barrah - 2023</p>
+          <p className="leading-loose mb-20">Chukwudi Barrah - 2023</p>
         </div>
       </div>
     </footer>

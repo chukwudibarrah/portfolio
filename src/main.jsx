@@ -1,44 +1,38 @@
-// portfolio/src/main.jsx
-import * as React from "react";
+// main.jsx
 import * as ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import * as React from "react";
+import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import App from "./App.jsx";
-import "./index.css";
 import Home from "./pages/Home.jsx";
 import Projects from "./pages/Projects.jsx";
 import Resume from "./pages/Resume.jsx";
 import Journal from "./pages/Journal.jsx";
 import Post from "./pages/Post.jsx";
+import ReactGA from "react-ga4";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/projects",
-        element: <Projects />,
-      },
-      {
-        path: "/resume",
-        element: <Resume />,
-      },
-      {
-        path: "/journal",
-        element: <Journal />,
-      },
-      {
-        path: "/journal/:slug",
-        element: <Post />,
-      },
-    ],
-  },
-]);
+ReactGA.initialize('G-141ZFEMEVE');
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+export const usePageTracking = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: location.pathname });
+  }, [location]);
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
+  <Router>
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route index element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/resume" element={<Resume />} />
+        <Route path="/journal" element={<Journal />} />
+        <Route path="/journal/:slug" element={<Post />} />
+      </Route>
+    </Routes>
+  </Router>
 );
