@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 
-
 export default function About() {
   return (
     <div className="min-h-screen font-poppins w-screen overscroll-none overflow-hidden flex flex-col items-center justify-center bg-charcoal pt-32">
@@ -22,19 +21,21 @@ export default function About() {
           .
           <br />
           <br />
-          Amateur photographer, avid hiker, tech enthusiast and eternal student, passionate about building, creating and problem-solving.
+          Amateur photographer, avid hiker, tech enthusiast and eternal student,
+          passionate about building, creating and problem-solving.
           <br />
-          <br />Doing less and doing it better. I am
-          a web developer and{" "}
+          <br />
+          Doing less and doing it better. I am a web developer and{" "}
           <span className="group text-gray-300 transition-all duration-300 ease-in-out">
-          <span className="">
-            <NavLink
-            to="/portfolio/projects"
-            className="bg-left-bottom bg-gradient-to-r from-sienna to-sienna bg-[length:100%_5px] bg-no-repeat group-hover:bg-[length:0%_5px] transition-all duration-700 ease-out font-bold hover:text-sienna"
-            >
-              this is what I do.
+            <span className="">
+              <NavLink
+                reloadDocument
+                to="/portfolio/projects"
+                className="bg-left-bottom bg-gradient-to-r from-sienna to-sienna bg-[length:100%_5px] bg-no-repeat group-hover:bg-[length:0%_5px] transition-all duration-700 ease-out font-bold hover:text-sienna"
+              >
+                this is what I do.
               </NavLink>
-          </span>
+            </span>
           </span>
         </motion.h2>
       </div>

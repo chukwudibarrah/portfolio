@@ -12,10 +12,16 @@ export default function Nav({ handleHideDrawer }) {
         <motion.div
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.9 }}
-          transition={{ type: "spring", stiffness: 100, damping: 17, duration: 1.5 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 17,
+            duration: 1.5,
+          }}
           className="md:ml-16 md:w-5/12 hover:drop-shadow-2xl"
         >
           <NavLink
+            reloadDocument
             to="/"
             className="text-5xl md:text-8xl font-black uppercase hover::bg-brown tracking-widest leading-6 md:leading-[60px]"
             onClick={() => handleHideDrawer()}
@@ -33,6 +39,7 @@ export default function Nav({ handleHideDrawer }) {
               className="nav-item mb-10 hover:drop-shadow-2xl group text-charcoal transition-all duration-300 ease-in-out"
             >
               <NavLink
+                reloadDocument
                 to="/projects"
                 className="text-5xl md:text-7xl font-semibold bg-left-bottom bg-gradient-to-r from-charcoal to-charcoal bg-[length:100%_8px] bg-no-repeat group-hover:bg-[length:0%_8px] transition-all duration-700 ease-out"
                 onClick={() => handleHideDrawer()}
@@ -47,6 +54,7 @@ export default function Nav({ handleHideDrawer }) {
               className="nav-item mb-10 hover:drop-shadow-2xl group text-charcoal transition-all duration-300 ease-in-out"
             >
               <NavLink
+                reloadDocument
                 to="/resume"
                 className="text-5xl md:text-7xl font-semibold bg-left-bottom bg-gradient-to-r from-charcoal to-charcoal bg-[length:100%_8px] bg-no-repeat group-hover:bg-[length:0%_8px] transition-all duration-700 ease-out"
                 onClick={() => handleHideDrawer()}
@@ -61,6 +69,7 @@ export default function Nav({ handleHideDrawer }) {
               className="nav-item mb-10 hover:drop-shadow-2xl group text-charcoal transition-all duration-300 ease-in-out"
             >
               <NavLink
+                reloadDocument
                 to="/journal"
                 className="text-5xl md:text-7xl font-semibold bg-left-bottom bg-gradient-to-r from-charcoal to-charcoal bg-[length:100%_8px] bg-no-repeat group-hover:bg-[length:0%_8px] transition-all duration-700 ease-out"
                 onClick={() => handleHideDrawer()}

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import * as contentful from 'contentful';
+import { NavLink } from "react-router-dom";
+import * as contentful from "contentful";
 import { trackLinkClick } from "../utils/Analytics";
 
 export default function Journal() {
@@ -41,7 +41,12 @@ export default function Journal() {
     <div className="min-h-screen w-screen overscroll-none bg-charcoal">
       <div className="grid lg:grid-cols-2 gap-10 font-outfit py-32 justify-items-center cursor-pointer md:mx-28 mx-4">
         {posts.map((post) => (
-          <Link key={post.sys.id} to={`/journal/${post.fields.slug}`} onClick={handleLinkClick}>
+          <NavLink
+            reloadDocument
+            key={post.sys.id}
+            to={`/journal/${post.fields.slug}`}
+            onClick={handleLinkClick}
+          >
             {post.fields.featuredImage && (
               <img
                 src={post.fields.featuredImage.fields.file.url}
@@ -52,7 +57,7 @@ export default function Journal() {
             <h3 className="text-gray-200 text-2xl md:text-4xl tracking-wide font-outfit my-5">
               {post.fields.title}
             </h3>
-          </Link>
+          </NavLink>
         ))}
       </div>
     </div>

@@ -1,4 +1,3 @@
-// import { motion } from "framer-motion";
 import Experience from "../components/Experience";
 import Education from "../components/Education";
 import OnlineCourses from "../components/OnlineCourses";
