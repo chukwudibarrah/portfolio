@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import * as contentful from "contentful";
+import SEO from "../utils/SEO";
 import { trackLinkClick } from "../utils/Analytics";
 
 export default function Journal() {
@@ -39,6 +40,15 @@ export default function Journal() {
 
   return (
     <div className="min-h-screen w-screen overscroll-none bg-charcoal">
+      <SEO
+        title="Journal | Chukwudi Barrah"
+        description="I write and share my some of my more civil thoughts and experiences."
+        name="@YourTwitterHandle"
+        type="website"
+        // Include a generic image URL or maybe the featured image of the most recent post
+        imageUrl="https://example.com/path/to/your/default/journal-image.jpg"
+        url="https://chukwudibarrah.com/journal"
+      />
       <div className="grid lg:grid-cols-2 gap-10 font-outfit py-32 justify-items-center cursor-pointer md:mx-28 mx-4">
         {posts.map((post) => (
           <NavLink
@@ -51,7 +61,7 @@ export default function Journal() {
               <img
                 src={post.fields.featuredImage.fields.file.url}
                 alt="Thumbnail"
-                className=""
+                className="hover:scale-95 transition-all duration-700"
               />
             )}
             <h3 className="text-gray-200 text-2xl md:text-4xl tracking-wide font-outfit my-5">

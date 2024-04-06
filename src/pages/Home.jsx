@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { container, item } from "../features/Animation";
 import { NavLink } from "react-router-dom";
 import { trackLinkClick } from "../utils/Analytics";
+import SEO from "../utils/SEO";
 
 const greetings = [
   "Hello!",
@@ -28,13 +29,19 @@ export default function Home() {
 
   return (
     <main className="min-h-screen w-screen overscroll-none overflow-hidden flex flex-col items-center justify-center bg-charcoal">
+      <SEO
+        title="Chukwudi Barrah"
+        description="Web editor, developer and copywriter; passionate about building, creating and problem-solving."
+        name="Chukwudi Barrah"
+        type="page"
+      />
       <p className="fixed z-0 text-[110px] leading-[90px] md:text-[350px] md:leading-[250px] opacity-5 text-gray-200 font-extrabold select-none">
         chukwudi
         <br />
         barrah
       </p>
       <div>
-        <h1 className="text-6xl text-brown pt-28 md:pt-0 md:text-[170px] font-bold z-40 font-outfit">
+        <h1 className="text-6xl text-brown pt-28 md:pt-0 md:text-[130px] lg:text-[170px] font-bold z-40 font-outfit">
           <Typewriter
             options={{
               autoStart: true,
@@ -63,7 +70,7 @@ export default function Home() {
           className="text-gray-300 font-extralight my-10 px-10 lg:px-96 leading-relaxed text-lg md:text-3xl text-center z-20 font-zilla"
         >
           Editor, web developer, amateur photographer, avid hiker, tech
-          enthusiast and eternal student, passionate about building, creating
+          enthusiast and eternal student; passionate about building, creating
           and problem-solving.
           <br />
           My name is Chukwudi Barrah and I believe in doing a diverse range of

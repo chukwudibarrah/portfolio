@@ -1,9 +1,16 @@
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
+import SEO from "../utils/SEO";
 
 export default function About() {
   return (
     <div className="min-h-screen font-poppins w-screen overscroll-none overflow-hidden flex flex-col items-center justify-center bg-charcoal pt-32">
+      <SEO
+        title="About - Chukwudi Barrah"
+        description="Web editor, developer and copywriter."
+        name="Chukwudi Barrah"
+        type="page"
+      />
       <p className="fixed -z-0 text-[200px] leading-[150px] md:text-[400px] md:leading-[230px] opacity-5 text-gray-200 font-extrabold">
         about
         <br />

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import * as contentful from 'contentful';
+import SEO from "../utils/SEO";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 
@@ -43,11 +44,11 @@ export default function Post() {
     fetchPost();
   }, [client, slug, isFetching]);
 
-  useEffect(() => {
-    if (post && post.fields && post.fields.content) {
-      console.log("Content:", post.fields.content);
-    }
-  }, [post]);
+  // useEffect(() => {
+  //   if (post && post.fields && post.fields.content) {
+  //     console.log("Related:", post.fields.related);
+  //   }
+  // }, [post]);
 
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -110,6 +111,14 @@ export default function Post() {
 
   return (
     <div>
+      <SEO
+        title={`${post.fields.title} | Chukwudi Barrah`}
+        description={post.fields.description}
+        name="@YourTwitterHandle"
+        type="article"
+        imageUrl={post.fields.featuredImage.fields.file.url}
+        url={`https://chukwudibarrah.com/journal/${slug}`}
+      />
       <div>
         <img
           src={post.fields.featuredImage.fields.file.url}
@@ -122,7 +131,31 @@ export default function Post() {
         <div className="my-16">
           {documentToReactComponents(post.fields.content, options)}
         </div>
-        {/* <div>{post.fields.related}</div> */}
+        <hr />
+
+        {/* Related Articles Section */}
+        <div>
+          <h3 className="text-4xl font-outfit mt-20 mb-12">
+            Related articles
+          </h3>
+        </div>
+        <div className="related-articles grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {post.fields.related && post.fields.related.map((relatedPost) => (
+            <div key={relatedPost.sys.id} className="related-article-card">
+              <img
+                src={relatedPost.fields.featuredImage.fields.file.url}
+                alt={relatedPost.fields.title}
+                className="max-w-full h-auto hover:scale-95 transition-all duration-700 ease-in-out overflow-hidden"
+              />
+              <h4 className="text-3xl font-outfit mt-2">
+                <NavLink to={`/journal/${relatedPost.fields.slug}`}>
+                  {relatedPost.fields.title}
+                </NavLink>
+              </h4>
+              <p className="mt-1 font-zilla md:text-2xl font-light">{relatedPost.fields.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
