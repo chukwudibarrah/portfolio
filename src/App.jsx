@@ -10,7 +10,7 @@ function App() {
       <SEO
         title="Chukwudi Barrah"
         description="Web editor, developer and copywriter; passionate about building, creating and problem-solving."
-        name="@YourTwitterHandle"
+        name="@cbarrah"
         type="website"
         imageUrl="https://example.com/default-image.jpg"
         url="https://chukwudibarrah.com"

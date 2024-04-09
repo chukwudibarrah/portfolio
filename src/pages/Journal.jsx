@@ -43,9 +43,8 @@ export default function Journal() {
       <SEO
         title="Journal | Chukwudi Barrah"
         description="I write and share my some of my more civil thoughts and experiences."
-        name="@YourTwitterHandle"
+        name="@cbarrah"
         type="website"
-        // Include a generic image URL or maybe the featured image of the most recent post
         imageUrl="https://example.com/path/to/your/default/journal-image.jpg"
         url="https://chukwudibarrah.com/journal"
       />

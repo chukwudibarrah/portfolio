@@ -36,7 +36,7 @@ export default function Footer() {
           transition={{ delay: 0.5, duration: 0.5 }}
           className="text-gray-300 md:text-2xl text-xl md:px-32 px-11 font-extralight leading-loose"
         >
-          Ready to start creating an outstanding web presence? Let's discuss
+          Ready to start creating an outstanding web presence? Let&apos;s discuss
           your amazing ideas.
           <br />
           <br />
@@ -48,7 +48,7 @@ export default function Footer() {
               className="bg-left-bottom bg-gradient-to-r from-sienna to-sienna bg-[length:100%_8px] bg-no-repeat group-hover:bg-[length:0%_8px] transition-all duration-700 ease-out z-40 hover:text-sienna md:text-6xl text-5xl uppercase font-outfit font-extrabold hover:cursor-pointer"
               onClick={openModal}
             >
-              the contact form.
+              this contact form.
             </span>
           </span>
         </motion.h2>
@@ -115,7 +115,7 @@ export default function Footer() {
           </NavLink>
         </div>
         <div className="text-gray-300">
-          <p className="leading-loose mb-20">Chukwudi Barrah - 2023</p>
+          <p className="leading-loose mb-20">Chukwudi Barrah - 2027</p>
         </div>
       </div>
     </footer>
