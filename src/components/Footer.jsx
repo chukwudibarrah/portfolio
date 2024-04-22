@@ -83,12 +83,12 @@ export default function Footer() {
             Email
           </h3>
           <a
-            href="mailto:contact@chukwudibarrah.com"
+            href="mailto:ndeewo@chukwudibarrah.com"
             id="animate"
             className="font-outfit font-extralight text-xl select-none hover:text-sienna"
             onClick={handleLinkClick}
           >
-            contact@chukwudibarrah.com
+            ndeewo@chukwudibarrah.com
           </a>
         </div>
       </motion.div>

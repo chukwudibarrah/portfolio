@@ -92,7 +92,7 @@ export default function About() {
           transition={{ delay: 0.5, duration: 0.5 }}
           className="leading-loose text-gray-300 md:text-2xl text-xl md:px-32 px-11 font-extralight tracking-wide"
         >
-          I believe in doing a diverse range of work. That way, there&apos;s
+          I believe in doing a diverse range of things. That way, there&apos;s
           always something exciting happening and if you crash too much for too
           long in one thing, you can do something else temporarily without
           hurting your feelings (not too badly, at least).
@@ -128,10 +128,10 @@ export default function About() {
           <span className="group text-gray-300 transition-all duration-300 ease-in-out">
             <span className="">
               <NavLink
-                to="mailto:ndewo@chukwudibarrah.com"
+                to="mailto:ndeewo@chukwudibarrah.com"
                 className="bg-left-bottom bg-gradient-to-r from-sienna to-sienna bg-[length:100%_5px] bg-no-repeat group-hover:bg-[length:0%_5px] transition-all duration-700 ease-out hover:text-sienna"
               >
-                ndewo@chukwudibarrah.com
+                ndeewo@chukwudibarrah.com
               </NavLink>
             </span>
           </span>{" "}
