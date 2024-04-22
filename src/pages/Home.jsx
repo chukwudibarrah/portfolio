@@ -65,7 +65,7 @@ export default function Home() {
         animate="show"
         className="overflow-hidden"
       >
-        <motion.p
+        {/* <motion.p
           variants={item}
           className="text-gray-300 font-extralight my-10 px-10 lg:px-96 leading-relaxed text-lg md:text-3xl text-center z-20 font-zilla"
         >
@@ -75,7 +75,7 @@ export default function Home() {
           <br />
           My name is Chukwudi Barrah and I believe in doing a diverse range of
           work.
-        </motion.p>
+        </motion.p> */}
         <motion.div
           animate={{ x: 0 }}
           initial={{ x: "100%" }}
@@ -84,11 +84,11 @@ export default function Home() {
         >
           <NavLink
             reloadDocument
-            to="/projects"
+            to="/about"
             className="font-extralight font-zilla text-gray-300 text-lg md:text-3xl bg-left-bottom bg-gradient-to-r from-sienna to-sienna bg-[length:100%_5px] bg-no-repeat group-hover:bg-[length:0%_5px] transition-all duration-700 ease-out z-40 hover:text-sienna"
             onClick={handleLinkClick}
           >
-            See selected projects
+            Wait, who&apos;s Chukwudi Barrah?
           </NavLink>
         </motion.div>
       </motion.div>

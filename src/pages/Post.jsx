@@ -127,7 +127,7 @@ export default function Post() {
         <h1 className="text-4xl md:text-6xl font-outfit">
           {post.fields.title}
         </h1>
-        <p className="my-4 font-outfit">
+        <p className="my-4 font-outfit hidden">
           Published on {formatDate(post.fields.published)}
         </p>
         <div className="my-16">

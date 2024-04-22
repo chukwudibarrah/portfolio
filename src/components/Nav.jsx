@@ -40,11 +40,11 @@ export default function Nav({ handleHideDrawer }) {
             >
               <NavLink
                 reloadDocument
-                to="/projects"
+                to="/about"
                 className="text-5xl md:text-7xl font-semibold bg-left-bottom bg-gradient-to-r from-charcoal to-charcoal bg-[length:100%_8px] bg-no-repeat group-hover:bg-[length:0%_8px] transition-all duration-700 ease-out"
                 onClick={() => handleHideDrawer()}
               >
-                Projects
+                About
               </NavLink>
             </motion.li>
             <motion.li
@@ -55,11 +55,11 @@ export default function Nav({ handleHideDrawer }) {
             >
               <NavLink
                 reloadDocument
-                to="/resume"
+                to="/projects"
                 className="text-5xl md:text-7xl font-semibold bg-left-bottom bg-gradient-to-r from-charcoal to-charcoal bg-[length:100%_8px] bg-no-repeat group-hover:bg-[length:0%_8px] transition-all duration-700 ease-out"
                 onClick={() => handleHideDrawer()}
               >
-                Resume
+                Projects
               </NavLink>
             </motion.li>
             <motion.li

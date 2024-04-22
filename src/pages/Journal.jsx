@@ -42,7 +42,7 @@ export default function Journal() {
     <div className="min-h-screen w-screen overscroll-none bg-charcoal">
       <SEO
         title="Journal | Chukwudi Barrah"
-        description="I write and share my some of my more civil thoughts and experiences."
+        description="I write about some of my more civil thoughts and experiences."
         name="@cbarrah"
         type="website"
         imageUrl="https://example.com/path/to/your/default/journal-image.jpg"

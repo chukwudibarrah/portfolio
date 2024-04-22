@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import App from "./App.jsx";
 import Home from "./pages/Home.jsx";
 import Projects from "./pages/Projects.jsx";
-import Resume from "./pages/Resume.jsx";
+import About from "./pages/About.jsx";
 import Journal from "./pages/Journal.jsx";
 import Post from "./pages/Post.jsx";
 import ReactGA from "react-ga4";
@@ -29,7 +29,7 @@ root.render(
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
         <Route path="/projects" element={<Projects />} />
-        <Route path="/resume" element={<Resume />} />
+        <Route path="/about" element={<About />} />
         <Route path="/journal" element={<Journal />} />
         <Route path="/journal/:slug" element={<Post />} />
       </Route>
