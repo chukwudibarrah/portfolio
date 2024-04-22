@@ -42,11 +42,13 @@ export default function About() {
           className="leading-loose text-gray-300 md:text-2xl text-xl md:px-32 px-11 font-extralight tracking-wide"
         >
           I&apos;m a web editor and copywriter, currently with the British
-          Psychological Society. I run the front-end web development company,{" "}
+          Psychological Society. I run the front-end web development and editorial management company,{" "}
           <span className="group text-gray-300 transition-all duration-300 ease-in-out">
             <span className="">
               <NavLink
                 to="https://www.blackgourd.com"
+                target="_blank"
+                rel="noopener"
                 className="bg-left-bottom bg-gradient-to-r from-sienna to-sienna bg-[length:100%_5px] bg-no-repeat group-hover:bg-[length:0%_5px] transition-all duration-700 ease-out hover:text-sienna"
               >
                 Black Gourd
@@ -58,6 +60,8 @@ export default function About() {
             <span className="">
               <NavLink
                 to="https://blackside.uk"
+                target="_blank"
+                rel="noopener"
                 className="bg-left-bottom bg-gradient-to-r from-sienna to-sienna bg-[length:100%_5px] bg-no-repeat group-hover:bg-[length:0%_5px] transition-all duration-700 ease-out hover:text-sienna"
               >
                 blackside UK
@@ -69,6 +73,8 @@ export default function About() {
             <span className="">
               <NavLink
                 to="https://www.otherexpats.com"
+                target="_blank"
+                rel="noopener"
                 className="bg-left-bottom bg-gradient-to-r from-sienna to-sienna bg-[length:100%_5px] bg-no-repeat group-hover:bg-[length:0%_5px] transition-all duration-700 ease-out hover:text-sienna"
               >
                 Other Expats
