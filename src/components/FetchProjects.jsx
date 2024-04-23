@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Client, query as q, errors } from "faunadb";
+import { Client, query as q } from "faunadb";
 import { trackLinkClick } from "../utils/Analytics";
 
 const faunaClient = new Client({
@@ -8,107 +8,104 @@ const faunaClient = new Client({
 
 export default function FetchProjects() {
   const [projects, setProjects] = useState([]);
+  const [displayedProjects, setDisplayedProjects] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [allProjects, setAllProjects] = useState([]);
+  const [projectIndex, setProjectIndex] = useState(0);
 
-  // Track GA4 clicks
-
-  const handleLinkClick = () => {
-    trackLinkClick("Projects link clicked");
-  };
+  const projectsPerPage = 5;  // Number of projects to show per page
 
   useEffect(() => {
-    const fetchProjects = async () => {
+    const fetchAllProjects = async () => {
       try {
         const result = await faunaClient.query(
           q.Map(
-            q.Paginate(q.Documents(q.Collection("projects"))),
+            q.Paginate(q.Documents(q.Collection("projects")), { size: 100000 }),  // Large size to simulate fetching all
             q.Lambda("doc", q.Get(q.Var("doc")))
           )
         );
-
-        const projectData = result.data.map((project) => ({
-          company: project.data.company,
-          media: project.data.media,
-          role: project.data.role,
-          image: project.data.image,
-          url: project.data.url,
-          title: project.data.title,
-          description: project.data.description,
-        }));
-
-        setProjects(projectData);
+        setAllProjects(
+          result.data.map((doc) => ({
+            id: doc.ref.id,
+            title: doc.data.title,
+            url: doc.data.url,
+            category: doc.data.category,
+            description: doc.data.description,
+          }))
+        );
       } catch (error) {
-        if (error instanceof errors.FaunaHTTPError) {
-          console.error("FaunaDB HTTP error:", error.message, error.errors);
-        } else {
-          console.error("Error fetching project data:", error.message);
-        }
-        // Handle the error or set an error state
+        console.error("Error fetching all projects:", error);
       }
     };
 
-    fetchProjects();
-  }, []); // Run once on component mount
+    fetchAllProjects();
+  }, []);
+
+  useEffect(() => {
+    setProjects(
+      selectedCategory === "All"
+        ? allProjects
+        : allProjects.filter((project) => project.category === selectedCategory)
+    );
+    setProjectIndex(0);  // Reset index when category changes
+  }, [selectedCategory, allProjects]);
+
+  useEffect(() => {
+    // Update displayed projects when projects or projectIndex changes
+    setDisplayedProjects(projects.slice(0, projectIndex + projectsPerPage));
+  }, [projects, projectIndex]);
+
+  const handleCategoryChange = (event) => {
+    const newCategory = event.target.value || event.target.textContent;
+    setSelectedCategory(newCategory);
+  };
+
+  const loadMoreProjects = () => {
+    if (projectIndex + projectsPerPage < projects.length) {
+      setProjectIndex(projectIndex + projectsPerPage);
+    }
+  };
 
   return (
-    <div className="grid lg:grid-cols-2 gap-16 pb-32 md:mx-28 mx-4">
-      {projects.map((project, index) => (
+    <div className="w-screen min-h-screen pb-32 md:px-28 px-6">
+      <div className="text-gray-200 font-outfit font-thin">
+        <p className="text-lg">Filter projects</p>
+        <div className="hidden max-w-full py-10 md:flex space-x-2 md:space-x-7 lg:space-x-12">
+          {["All", "Editing and copywriting", "Podcasting", "Web development", "Web editing"].map((category) => (
+            <button key={category} onClick={handleCategoryChange} className={`px-3 py-2 rounded-md ${selectedCategory === category ? "text-sienna font-semibold" : "text-gray-200"}`}>
+              {category}
+            </button>
+          ))}
+        </div>
+        <div className="block md:hidden max-w-full py-10">
+          <select id="skill" name="skill" onChange={handleCategoryChange} value={selectedCategory} className="bg-transparent outline-sienna ring-sienna border-gray-200 border-2 rounded-md" required>
+            <option value="" disabled>Select skill</option>
+            {["All", "Editing and copywriting", "Podcasting", "Web development", "Web editing"].map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+      {displayedProjects.map((project, index) => (
         <div key={index}>
-          <div className="">
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={handleLinkClick}
-            >
-              <div>
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="cursor-pointer"
-                />
-              </div>
-            </a>
-            <div>
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={handleLinkClick}
-              >
-                <h2 className="text-3xl text-gray-200 md:text-[39px] font-outfit my-4">
-                  {project.title}
-                </h2>
+          <ul className="list-disc list-inside text-gray-200 text-2xl md:text-[39px] font-outfit leading-loose font-thin">
+            <li>
+              <a href={project.url} target="_blank" rel="noopener noreferrer" onClick={() => trackLinkClick("Projects link clicked")}>
+                {project.title}
               </a>
-            </div>
-            <div className="text-gray-600">
-              <p className="font-extralight text-lg text-saffron font-zilla my-3">
-                {project.description}
-              </p>
-              <p className="text-xl text-gray-200 font-zilla">
-                Company: {project.company}
-              </p>
-              <p className="text-xl text-gray-200 font-zilla">
-                Media: {project.media}
-              </p>
-              <p className="text-xl text-gray-200 font-zilla">
-                Role: {project.role}
-              </p>
-              <div className="my-5">
-                <a
-                  href={project.url}
-                  id="animate"
-                  className="font-zilla text-gray-200 text-xl hover:text-sienna"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={handleLinkClick}
-                >
-                  See project
-                </a>
-              </div>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
       ))}
+      {projectIndex + projectsPerPage < projects.length && (
+        <div className="flex justify-center my-32 group">
+          <button onClick={loadMoreProjects} className="font-outfit text-xl md:text-2xl font-extralight text-gray-200 bg-left-bottom bg-gradient-to-r from-sienna to-sienna bg-[length:100%_8px] bg-no-repeat group-hover:bg-[length:0%_8px] transition-all duration-700 ease-out hover:text-sienna">
+            Load more...
+          </button>
+        </div>
+      )}
     </div>
   );
 }

@@ -137,7 +137,7 @@ export default function Post() {
 
         {/* Related Articles Section */}
         <div>
-          <h3 className="text-4xl font-outfit mt-20 mb-12">Related articles</h3>
+          <h3 className="text-4xl font-outfit mt-20 mb-12">Continue reading</h3>
         </div>
         <div className="related-articles grid grid-cols-1 lg:grid-cols-2 gap-10">
           {post.fields.related &&
