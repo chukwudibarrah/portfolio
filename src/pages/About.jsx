@@ -41,8 +41,7 @@ export default function About() {
           transition={{ delay: 0.5, duration: 0.5 }}
           className="leading-loose text-gray-300 md:text-2xl text-xl md:px-32 px-11 font-extralight tracking-wide"
         >
-          I&apos;m a web editor and copywriter, currently with the British
-          Psychological Society. I run the front-end web development and editorial management company,{" "}
+          I do things; primarily online content that includes creating websites like {" "}
           <span className="group text-gray-300 transition-all duration-300 ease-in-out">
             <span className="">
               <NavLink
@@ -55,7 +54,7 @@ export default function About() {
               </NavLink>
             </span>
           </span>
-          , and host a podcast and try to catalogue all things Black on{" "}
+          , host a podcast and try to catalogue all things Black on{" "}
           <span className="group text-gray-300 transition-all duration-300 ease-in-out">
             <span className="">
               <NavLink
@@ -68,7 +67,7 @@ export default function About() {
               </NavLink>
             </span>
           </span>{" "}
-          [I also hosted the podcast and managed{" "}
+          (and on{" "}
           <span className="group text-gray-300 transition-all duration-300 ease-in-out">
             <span className="">
               <NavLink
@@ -80,19 +79,37 @@ export default function About() {
                 Other Expats
               </NavLink>
             </span>
-          </span>{" "}
-          (in case you were wondering)].
+          </span>
+          ). You can find some of my editorial and copywriting work in the <span className="group text-gray-300 transition-all duration-300 ease-in-out">
+            <span className="">
+              <NavLink
+                to="/journal"
+                className="bg-left-bottom bg-gradient-to-r from-sienna to-sienna bg-[length:100%_5px] bg-no-repeat group-hover:bg-[length:0%_5px] transition-all duration-700 ease-out hover:text-sienna"
+              >
+                journal
+              </NavLink>
+            </span>
+          </span> and in my selection of previous <span className="group text-gray-300 transition-all duration-300 ease-in-out">
+            <span className="">
+              <NavLink
+                to="/projects"
+                className="bg-left-bottom bg-gradient-to-r from-sienna to-sienna bg-[length:100%_5px] bg-no-repeat group-hover:bg-[length:0%_5px] transition-all duration-700 ease-out hover:text-sienna"
+              >
+                projects
+              </NavLink>
+            </span>
+          </span>.
         </motion.p>
 
-        <motion.p
+        {/* <motion.p
           animate={{ y: 0 }}
           initial={{ y: "100%" }}
           transition={{ delay: 0.5, duration: 0.5 }}
           className="leading-loose text-gray-300 md:text-3xl text-2xl md:px-32 px-11 font-extralight tracking-wide"
         >
           What I do
-        </motion.p>
-        <motion.p
+        </motion.p> */}
+        {/* <motion.p
           animate={{ y: 0 }}
           initial={{ y: "100%" }}
           transition={{ delay: 0.5, duration: 0.5 }}
@@ -102,7 +119,7 @@ export default function About() {
           always something exciting happening and if you crash too much for too
           long in one thing, you can do something else temporarily without
           hurting your feelings (not too badly, at least).
-        </motion.p>
+        </motion.p> */}
         <motion.p
           animate={{ y: 0 }}
           initial={{ y: "100%" }}
