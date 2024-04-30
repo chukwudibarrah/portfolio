@@ -11,7 +11,7 @@ export default function About() {
         name="Chukwudi Barrah"
         type="page"
       />
-      <h1 className="fixed -z-0 text-[200px] leading-[150px] md:text-[400px] md:leading-[230px] opacity-5 text-gray-200 font-extrabold">
+      <h1 className="fixed -z-0 text-[200px] leading-[150px] md:text-[400px] md:leading-[230px] opacity-5 text-gray-200/40 font-extrabold">
         about
         <br />
         me
