@@ -70,15 +70,15 @@ export default function Journal() {
           .sort((a, b) => b - a) // Sort by latest year first
           .map((year) => (
             <div key={year}>
-              <h3 className="text-sienna font-outfit text-3xl uppercase py-5">{year}</h3>
+              <h3 className="text-sienna font-outfit text-md md:text-xl uppercase pb-2 pt-10">{year}</h3>
 
               {Object.keys(groupedPosts[year])
                 .sort((a, b) => moment(b, 'MMMM') - moment(a, 'MMMM')) // Sort months in reverse order
                 .map((month) => (
                   <div key={month}>
-                    <h4 className="uppercase text-sienna font-outfit text-2xl">{month}</h4>
+                    <h4 className="uppercase text-sienna font-outfit text-xl md:text-2xl font-semibold">{month}</h4>
 
-                    <ul className="list-disc list-inside text-gray-200 text-2xl md:text-4xl font-outfit">
+                    <ul className="list-disc list-inside text-gray-200 text-2xl md:text-4xl font-outfit font-thin">
                       {groupedPosts[year][month].map((post) => (
                         <NavLink
                           reloadDocument
