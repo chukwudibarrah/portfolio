@@ -5,7 +5,7 @@ import OnlineCourses from "../components/OnlineCourses";
 export default function Resume() {
   return (
     <div className="min-h-screen w-screen overscroll-none flex flex-col md:flex-row md:items-baseline md:pt-24 justify-center bg-charcoal">
-      <p className="fixed z-0 text-[180px] leading-[200px] md:text-[400px] md:leading-[400px] opacity-5 text-gray-200 font-extrabold lg:mt-52">
+      <p className="fixed z-0 text-[180px] leading-[200px] md:text-[400px] md:leading-[400px] opacity-5 text-gray-200 font-extrabold lg:mt-52 select-none">
         résumé
       </p>
 

@@ -1,12 +1,26 @@
 import FetchProjects from "../components/FetchProjects";
+import SEO from "../utils/SEO";
 
 export default function Projects() {
   return (
-    <div className="min-h-screen w-screen overscroll-none bg-charcoal">
-      <div className="text-4xl text-brown lg:text-7xl font-zilla py-28 md:mx-28 mx-4">
-        <h1>
+    <div className="min-h-screen w-screen flex flex-col items-center overscroll-none bg-charcoal pt-32">
+      <SEO
+        title="Projects | Chukwudi Barrah"
+        description="A compilation of some of my past and ongoing works"
+        name="@cbarrah"
+        type="website"
+        imageUrl="/me me me.webp"
+        url="https://chukwudibarrah.com/projects"
+      />
+      <h1 className="fixed bottom-36 -z-0 text-[160px] leading-[120px] md:text-[400px] md:leading-[300px] opacity-5 text-gray-200/40 font-extrabold select-none">
+        pro
+        <br />
+        jects
+      </h1>
+      <div className="md:text-7xl text-5xl font-zilla text-brown md:px-32 px-11 tracking-wide py-20 z-10">
+        <h2>
           A selection of past and ongoing projects
-        </h1>
+        </h2>
       </div>
       <FetchProjects />
     </div>

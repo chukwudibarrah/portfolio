@@ -61,7 +61,7 @@ export default function Journal() {
         description="I write about some of my more civil thoughts and experiences."
         name="@cbarrah"
         type="website"
-        imageUrl="https://example.com/path/to/your/default/journal-image.jpg"
+        imageUrl="/me me me.webp"
         url="https://chukwudibarrah.com/journal"
       />
 
@@ -71,7 +71,7 @@ export default function Journal() {
         nal
       </h1>
 
-      <div className="py-32 justify-items-center cursor-pointer md:mx-28 mx-4">
+      <div className="py-32 justify-items-center md:mx-28 mx-4 z-10">
         {Object.keys(groupedPosts)
           .sort((a, b) => b - a) // Sort by latest year first
           .map((year) => (
@@ -81,7 +81,7 @@ export default function Journal() {
               <h3 className="text-sienna font-outfit text-md md:text-xl uppercase pb-2 pt-10">
                 {year}
               </h3>
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-3">
                 {" "}
                 {/* Year and month column */}
                 <div className="">
@@ -96,7 +96,7 @@ export default function Journal() {
                     ))}
                 </div>
                 {/* Posts column */}
-                <div className="">
+                <div className="col-span-2">
                   {Object.keys(groupedPosts[year])
                     .sort((a, b) => moment(b, "MMMM") - moment(a, "MMMM"))
                     .map((month) => (
@@ -105,16 +105,16 @@ export default function Journal() {
                         className="list-disc list-inside text-gray-200 text-xl md:text-4xl font-outfit font-thin"
                       >
                         {groupedPosts[year][month].map((post) => (
-                          <NavLink
-                            reloadDocument
-                            key={post.sys.id}
-                            to={`/journal/${post.fields.slug}`}
-                            onClick={handleLinkClick}
-                          >
-                            <li className="pb-3 xl:pb-4">
+                          <li className="pb-4 group" key={post.sys.id}>
+                            <NavLink
+                              reloadDocument
+                              to={`/journal/${post.fields.slug}`}
+                              onClick={handleLinkClick}
+                              className="bg-left-bottom bg-gradient-to-r from-sienna to-sienna bg-[length:100%_2px] bg-no-repeat group-hover:bg-[length:0%_2px] transition-all duration-700 ease-out hover:text-sienna"
+                            >
                               {post.fields.title}
-                            </li>
-                          </NavLink>
+                            </NavLink>
+                          </li>
                         ))}
                       </ul>
                     ))}

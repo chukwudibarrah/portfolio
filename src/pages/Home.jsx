@@ -34,6 +34,7 @@ export default function Home() {
         description="Web editor, developer and copywriter; passionate about building, creating and problem-solving."
         name="Chukwudi Barrah"
         type="page"
+        imageUrl="/me me me.webp"
       />
       <p className="fixed z-0 text-[110px] leading-[90px] md:text-[350px] md:leading-[250px] opacity-5 text-gray-200 font-extrabold select-none">
         chukwudi

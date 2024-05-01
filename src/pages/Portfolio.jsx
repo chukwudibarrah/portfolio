@@ -9,7 +9,7 @@ export default function Portfolio() {
       transition={{ duration: 0.75, ease: "easeInOut" }}
       exit={{opacity: 1}}
     >
-      <p className="absolute z-0 text-[250px] leading-[200px] md:text-[500px] md:leading-[400px] opacity-5 text-gray-200 font-extrabold">
+      <p className="absolute z-0 text-[250px] leading-[200px] md:text-[500px] md:leading-[400px] opacity-5 text-gray-200 font-extrabold select-none">
         port
         <br />
         <span className="md:ml-14">folio</span>
