@@ -9,7 +9,7 @@ export default function Projects() {
         description="A compilation of some of my past and ongoing works"
         name="@cbarrah"
         type="website"
-        imageUrl="/me me me.webp"
+        imageUrl="https://raw.githubusercontent.com/chukwudibarrah/portfolio/main/public/uploads/chukwudibarrah.webp"
         url="https://chukwudibarrah.com/projects"
       />
       <h1 className="fixed bottom-36 -z-0 text-[160px] leading-[120px] md:text-[400px] md:leading-[300px] opacity-5 text-gray-200/40 font-extrabold select-none">

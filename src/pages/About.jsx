@@ -10,7 +10,7 @@ export default function About() {
         description="Web editor, developer and copywriter."
         name="Chukwudi Barrah"
         type="page"
-        imageUrl="/me me me.webp"
+        imageUrl="https://raw.githubusercontent.com/chukwudibarrah/portfolio/main/public/uploads/chukwudibarrah.webp"
       />
       <h1 className="fixed bottom-36 -z-0 text-[160px] leading-[150px] md:text-[400px] md:leading-[230px] opacity-5 text-gray-200/40 font-extrabold select-none">
         about

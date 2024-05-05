@@ -12,7 +12,7 @@ function App() {
         description="Web editor, developer and copywriter; passionate about building, creating and problem-solving."
         name="@cbarrah"
         type="website"
-        imageUrl="/me me me.webp"
+        imageUrl="https://raw.githubusercontent.com/chukwudibarrah/portfolio/main/public/uploads/chukwudibarrah.webp"
         url="https://chukwudibarrah.com"
       />
       <Drawer />

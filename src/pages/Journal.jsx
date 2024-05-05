@@ -61,7 +61,7 @@ export default function Journal() {
         description="I write about some of my more civil thoughts and experiences."
         name="@cbarrah"
         type="website"
-        imageUrl="/me me me.webp"
+        imageUrl="https://raw.githubusercontent.com/chukwudibarrah/portfolio/main/public/uploads/chukwudibarrah.webp"
         url="https://chukwudibarrah.com/journal"
       />
 
