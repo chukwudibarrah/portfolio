@@ -1,5 +1,8 @@
-[functions]
-directory = "netlify/functions"
+[build]
+  functions = "netlify/functions"
+  node_bundler = "esbuild"
 
-[functions."generate-sitemap"]
-schedule = "0 0 1 * *"
+[functions.generate-sitemap]
+  name = "generate-sitemap"
+  path = "netlify/functions/generate-sitemap.js"
+  events = [{ type = "http" }, { type = "scheduled", cron = "0 0 1 * *" }]

@@ -1,3 +1,4 @@
+// netlify/functions/generate-sitemap.js
 import fs from 'fs';
 import path from 'path';
 import { createSitemap } from 'sitemaps';
@@ -18,7 +19,10 @@ const handler = async (event, context) => {
   const urls = [];
 
   try {
+    console.log('Fetching journal entries from Contentful...');
     const journalEntries = await contentfulClient.getEntries({ content_type: 'journal' });
+    console.log('Fetched journal entries:', journalEntries.items.length);
+
     journalEntries.items.forEach((entry) => {
       urls.push({
         loc: `https://chukwudibarrah.com/journal/${entry.fields.slug}`,
@@ -29,16 +33,19 @@ const handler = async (event, context) => {
     });
   } catch (error) {
     console.error('Error fetching journal entries:', error);
-    return { statusCode: 500, body: 'Error fetching journal entries' };
+    return { statusCode: 500, body: JSON.stringify({ error: 'Error fetching journal entries' }) };
   }
 
   try {
+    console.log('Fetching projects from FaunaDB...');
     const projectsResult = await faunaClient.query(
       q.Map(
         q.Paginate(q.Documents(q.Collection('projects'))),
         q.Lambda('doc', q.Get(q.Var('doc')))
       )
     );
+    console.log('Fetched projects:', projectsResult.data.length);
+
     projectsResult.data.forEach((project) => {
       urls.push({
         loc: project.data.url,
@@ -49,7 +56,7 @@ const handler = async (event, context) => {
     });
   } catch (error) {
     console.error('Error fetching projects:', error);
-    return { statusCode: 500, body: 'Error fetching projects' };
+    return { statusCode: 500, body: JSON.stringify({ error: 'Error fetching projects' }) };
   }
 
   urls.push(
@@ -58,19 +65,24 @@ const handler = async (event, context) => {
     { loc: 'https://chukwudibarrah.com/contact', changefreq: 'yearly', priority: 0.5 }
   );
 
-  const sitemapPath = path.join('/tmp', 'sitemap.xml');
-  createSitemap({
-    filePath: sitemapPath,
-    urls,
-  });
+  try {
+    console.log('Generating sitemap...');
+    const sitemapPath = path.join(__dirname, '..', '..', 'public', 'sitemap.xml');
+    if (!fs.existsSync(path.dirname(sitemapPath))) {
+      fs.mkdirSync(path.dirname(sitemapPath), { recursive: true });
+    }
+    createSitemap({
+      filePath: sitemapPath,
+      urls,
+    });
 
-  const sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
+    console.log('Sitemap generated successfully.');
 
-  const publicSitemapPath = path.join(__dirname, '..', '..', '..', 'public', 'sitemap.xml');
-  fs.writeFileSync(publicSitemapPath, sitemapContent);
-
-  console.log('Sitemap generated successfully.');
-  return { statusCode: 200, body: 'Sitemap generated successfully' };
+    return { statusCode: 200, body: 'Sitemap generated successfully' };
+  } catch (error) {
+    console.error('Error generating sitemap:', error);
+    return { statusCode: 500, body: JSON.stringify({ error: 'Error generating sitemap' }) };
+  }
 };
 
 export { handler };
