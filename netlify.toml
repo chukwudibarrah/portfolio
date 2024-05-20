@@ -1,6 +1,5 @@
 [functions]
 directory = "netlify/functions"
 
-[[functions.schedule]]
-name = "generate-sitemap"
-cron = "0 0 1 * *"
+[functions."generate-sitemap"]
+schedule = "0 0 1 * *"
