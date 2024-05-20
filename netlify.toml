@@ -1,0 +1,6 @@
+[functions]
+directory = "netlify/functions"
+
+[[functions.schedule]]
+name = "generate-sitemap"
+cron = "0 0 1 * *"
